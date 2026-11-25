@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101412">
+    <title>Open Road — Driving Simulator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Open Road home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M5 25 13 7h6l8 18M10 19h12M14 12l-2 5m8-5 2 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="brand-name">open<span>road</span></span>
+        </a>
+        <div class="topbar-right">
+          <span class="session-label"><span class="live-dot"></span> FREE DRIVE</span>
+          <span class="topbar-divider"></span>
+          <span class="version-label">SIMULATOR <span>01</span></span>
+        </div>
+      </header>
+
+      <section class="intro">
+        <div>
+          <p class="eyebrow">YOUR DRIVE, YOUR PACE</p>
+          <h1>Find your <span>open road.</span></h1>
+          <p class="intro-copy">A little space to slow down, speed up, and enjoy the ride.</p>
+        </div>
+        <button class="reset-button" id="restart" type="button" aria-label="Restart drive">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.3 8a6.8 6.8 0 1 1 .2 4.7M3.3 3.5V8h4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Restart drive</span>
+        </button>
+      </section>
+
+      <section class="simulator" aria-label="Driving simulator">
+        <div class="scene-wrap">
+          <canvas id="road-view" aria-label="First-person view from a car driving on an open road"></canvas>
+          <div class="scene-vignette" aria-hidden="true"></div>
+          <div class="scene-topline">
+            <div class="scene-location">
+              <span class="location-icon" aria-hidden="true">
+                <svg viewBox="0 0 18 18" fill="none"><path d="M14.2 7.4c0 3.7-5.2 8-5.2 8s-5.2-4.3-5.2-8a5.2 5.2 0 1 1 10.4 0Z" stroke="currentColor" stroke-width="1.35"/><circle cx="9" cy="7.3" r="1.7" stroke="currentColor" stroke-width="1.35"/></svg>
+              </span>
+              <span>SCENIC HIGHWAY</span>
+              <span class="location-separator">/</span>
+              <span class="muted-location">ENDLESS SUMMER</span>
+            </div>
+            <div class="scene-weather"><span aria-hidden="true">☀</span> 24° <span class="weather-divider"></span> CLEAR</div>
+          </div>
+          <div class="scene-hint" id="scene-hint">
+            <span class="hint-key">W</span><span class="hint-key">A</span><span class="hint-key">S</span><span class="hint-key">D</span>
+            <span>or arrow keys to drive</span>
+          </div>
+          <div class="touch-controls" aria-label="Touch driving controls">
+            <div class="touch-steering">
+              <button type="button" class="touch-button" data-control="left" aria-label="Steer left">←</button>
+              <button type="button" class="touch-button" data-control="right" aria-label="Steer right">→</button>
+            </div>
+            <div class="touch-pedals">
+              <button type="button" class="touch-button brake-button" data-control="brake" aria-label="Brake">BRAKE</button>
+              <button type="button" class="touch-button drive-button" data-control="throttle" aria-label="Accelerate">GO</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cockpit-bar">
+          <div class="cockpit-label"><span class="cockpit-dot"></span> COCKPIT VIEW</div>
+          <div class="control-legend">
+            <span class="legend-item"><kbd>W</kbd><kbd>↑</kbd> Accelerate</span>
+            <span class="legend-item"><kbd>S</kbd><kbd>↓</kbd> Brake</span>
+            <span class="legend-item"><kbd>A</kbd><kbd>D</kbd> <kbd>←</kbd><kbd>→</kbd> Steer</span>
+          </div>
+          <div class="engine-status"><span class="engine-indicator"></span> ENGINE ON</div>
+        </div>
+      </section>
+
+      <section class="instrument-panel" aria-label="Driving telemetry">
+        <article class="instrument speed-instrument">
+          <div class="instrument-heading"><span class="heading-mark"></span> CURRENT SPEED</div>
+          <div class="speed-readout"><span id="speed">0</span><span class="speed-unit">km/h</span></div>
+          <div class="speed-track" aria-hidden="true"><span id="speed-fill"></span></div>
+          <div class="instrument-foot"><span>0</span><span>CRUISING</span><span>180</span></div>
+        </article>
+        <article class="instrument trip-instrument">
+          <div class="instrument-heading"><span class="heading-mark"></span> TRIP DISTANCE</div>
+          <div class="trip-readout"><span id="distance">0.00</span><span class="trip-unit">km</span></div>
+          <div class="trip-caption"><span class="trip-icon" aria-hidden="true">↗</span> YOUR JOURNEY SO FAR</div>
+        </article>
+        <article class="instrument gear-instrument">
+          <div class="instrument-heading"><span class="heading-mark"></span> TRANSMISSION</div>
+          <div class="gear-readout"><span class="gear-prefix">GEAR</span><span id="gear">N</span></div>
+          <div class="gear-caption"><span id="drive-state">READY WHEN YOU ARE</span></div>
+        </article>
+      </section>
+
+      <footer class="page-footer">
+        <span>TAKE THE SCENIC ROUTE.</span>
+        <span class="footer-center">NO DESTINATION. NO RUSH.</span>
+        <span>BUILT FOR THE JOURNEY <span class="footer-spark">✳</span></span>
+      </footer>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
